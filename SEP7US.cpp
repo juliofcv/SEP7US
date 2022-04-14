@@ -78,7 +78,7 @@ unsigned char *toISOCC(unsigned char templateFormat, unsigned char *fTemplate, u
     unsigned char *ISOCC = new unsigned char[sizeISOCC];
     short i;  short k = 0;
     short tmpt, tmpx1, tmpx2, tmpx, tmpy1, tmpy2, tmpy, tmpa;
-    short* ptmpt=0; short* ptmpx1=0; short* ptmpx2=0; short* ptmpx=0; short* ptmpy1=0; short* ptmpy2=0; short* ptmpy=0; unsigned char* ptmpa=0;
+    short* ptmpt=0; short* ptmpx1=0; short* ptmpx2=0; short* ptmpx=0; short* ptmpy1=0; short* ptmpy2=0; short* ptmpy=0; short* ptmpa=0;
     ptmpt=&tmpt; ptmpx1=&tmpx1; ptmpx2=&tmpx2; ptmpx=&tmpx;ptmpy1=&tmpy1;ptmpy2=&tmpy2;ptmpy=&tmpy;ptmpa=&tmpa;
     double coordmmX, coordunitsX, coordmmY, coordunitsY;
     double* pcoordmmX=0; double* pcoordunitsX=0; double* pcoordmmY=0; double* pcoordunitsY=0;

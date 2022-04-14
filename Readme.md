@@ -1,4 +1,4 @@
-![SEP7US](https://i.imgur.com/bFzPNrr.png)
+![SEP7US](https://i.imgur.com/p31P79C.png)
 
 # SEP7US MatchOnMard Auxiliar
 
