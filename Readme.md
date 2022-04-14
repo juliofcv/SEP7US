@@ -93,7 +93,7 @@ Para calcular la coordenada Y en formato ISOCC y usando la expresión base, qued
 ***
 ### Recuantización Angular
 La recuantización angular sirve para representar en 6 bits el ángulo de la minucia teniendo en cuenta que la resolución de los angluos varia en los 2 formatos ANSI e ISO, para representar en 6 bits un ángulo cuyo valor máximo será 360, se hará de la siguiente manera.
-####Cálculo del divisor base para plantillas ISOCC
+#### Cálculo del divisor base para plantillas ISOCC
 ```
 360/64 = 5.625
 ```
