@@ -171,10 +171,10 @@ Obtiene el template convertido a ISO Compact Card
 * **templateFormat**: Se debe especificar el formato del template 0xFF para formato ISO19794, y 0x7F para formato ANSI378
 * **fTemplate**: EL puntero que apunta al array que contiene el template base
 * **sorting**: Se debe especificar el sorting en el parámetro con alguno de los siguientes valores en formato byte<br/>
-```c++
+```text
 0x00 : Obtiene el sorting XY Ascendente (XYAsc)
 0x0F : Obtiene el sorting XY Descendente (XYDsc)
-0x10 : Obtiene el sorting YX Ascendente (YXAsc**)
+0x10 : Obtiene el sorting YX Ascendente (YXAsc)
 0x1F : Obtiene el sorting YX Descendente (YXDsc)
 ```
 
