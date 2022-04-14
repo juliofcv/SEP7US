@@ -1,7 +1,7 @@
 /*
  * SEP7US Match on Card 0x7E3
  * ..........................
- * autor:	Julio Chinchilla Valenzuela
+ * autor: Julio Chinchilla Valenzuela
  * .....................................
  * Se reserva el uso de este código únicamente al autor, no se deberá utilizar
  * sin la autorización debida, cualquier modificación que se realice
@@ -17,6 +17,21 @@
 
 unsigned char *toISOCC(unsigned char templateFormat, unsigned char *fTemplate, unsigned char sorting);
 
+/**
+ * Obtiene el template en formato ISOCC agreangando las cabeceras del comando de verificación PIV, basado en estándares ISO7816
+ * @param CLA Class of instruction
+ * @param INS Instruction code
+ * @param P1 Instruction parameter 1
+ * @param P2 Instruction parameter 2
+ * @param templateFormat Se debe especificar el formato del template 0xFF para formato ISO19794, y 0x7F para formato ANSI378
+ * @param fTemplate EL puntero que apunta al array que contiene el template base
+ * @param sorting Se debe especificar el sorting en el parámetro con alguno de los siguientes valores en formato byte
+ *  0x00 : Obtiene el sorting XY Ascendente (XYAsc)
+    0x0F : Obtiene el sorting XY Descendente (XYDsc)
+    0x10 : Obtiene el sorting YX Ascendente (YXAsc)
+    0x1F : Obtiene el sorting YX Descendente (YXDsc)
+ * @return
+ */
 __declspec(dllexport) unsigned char *Verify(unsigned char CLA, unsigned char INS, unsigned char P1, unsigned char P2, unsigned char templateFormat, unsigned char *fTemplate, unsigned char sorting) {
     unsigned char *ISOCC = toISOCC(templateFormat, fTemplate, sorting);
     short sizeISOCC = sizeof(ISOCC);
@@ -41,7 +56,7 @@ __declspec(dllexport) unsigned char *Verify(unsigned char CLA, unsigned char INS
  * @param templateFormat Se debe especificar el formato del template 0xFF para formato ISO19794, y 0x7F para formato ANSI378
  * @param fTemplate EL puntero que apunta al array que contiene el template base
  * @param sorting  Se debe especificar el sorting
- * 0X00 XYAsc
+ * 0x00 XYAsc
  * 0x0F XYDsc
  * 0x10 YXAsc
  * 0x1F YXDsc
@@ -51,6 +66,17 @@ __declspec(dllexport) unsigned char *ISOCC(unsigned char templateFormat, unsigne
     return toISOCC(templateFormat, fTemplate, sorting);
 }
 
+/**
+ * Conversión a ISOCC
+ * @param templateFormat Se debe especificar el formato del template 0xFF para formato ISO19794, y 0x7F para formato ANSI378
+ * @param fTemplate EL puntero que apunta al array que contiene el template base
+ * @param sorting Se debe especificar el sorting
+ * 0x00 XYAsc
+ * 0x0F XYDsc
+ * 0x10 YXAsc
+ * 0x1F YXDsc
+ * @return
+ */
 unsigned char *toISOCC(unsigned char templateFormat, unsigned char *fTemplate, unsigned char sorting) {
     float ISOCC_ANGLE_RESOLUTION = 5.625f;
     float ANGLE_RESOLUTION;
@@ -73,7 +99,7 @@ unsigned char *toISOCC(unsigned char templateFormat, unsigned char *fTemplate, u
     short numMinutiae = (short) fTemplate[posDataTemplate+9] & 0xFF;
     short sizeMin = sizeof(numMinutiae);
     // Tamaño del template ISOCC determinado por el número de minucias
-    // Forma del template (X, Y, T|A)
+    // Forma del template (X, Y, T|T)
     short sizeISOCC = numMinutiae*3; // tamaño del array determinado por el tipo de template
     unsigned char *ISOCC = new unsigned char[sizeISOCC];
     short i;  short k = 0;

@@ -15,7 +15,7 @@
 #ifndef SEP7US_SORTING_H
 #define SEP7US_SORTING_H
 
-void XYAsc(unsigned char *a, short n);
+void XYAsc(unsigned char *isocc, short n);
 void XYDsc(unsigned char *a, short n);
 void YXAsc(unsigned char *a, short n);
 void YXDsc(unsigned char *a, short n);

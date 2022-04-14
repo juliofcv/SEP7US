@@ -15,7 +15,7 @@ SEP7US Match on Card 0x7E3
 Cualquier modificación que se realice sin la supervisón y/o consentimiento del corre por su cuenta y riesgo. Cualquier cambio en el código alterará drásticamente los resultados de la verificativa sobre cualquier aplicación PIV Smart Card
 
 ## Herramientas utilizadas
-* C++
+* c++
 * Java Native Interface
 ***
 # SEP7US
@@ -54,7 +54,7 @@ posDataTemplate = 0x14;
 short numMinutiae = (short) fTemplate[posDataTemplate+9] & 0xFF;
 ```
 #### Tamaño del array que tendrá todo el template ISOCC
-Dada la forma del template (X, Y, T|A) el tamaño del array estará determinado por el númer de minucias multiplicado por 3
+Dada la forma del template (X, Y, T|T) el tamaño del array estará determinado por el númer de minucias multiplicado por 3
 ```c++
 short sizeISOCC = numMinutiae*3;
 ```
@@ -145,22 +145,22 @@ short t = (*ptmpt | tmpFAngle) & 0xFF;
 ### Sorting de Minucias
 Aunque algunas tarjetas ISO7816 no necesitan ningun tipo de sorting, se incluyen las 4 funciones principales
 #### Sorting XY Ascendente (XYAsc)
-Cada minucia ya convertida a ISOCC con su forma (X, Y, T|A), es ordenada direcatamente con base a la posicón **X** de la misma, en orden ascendente (de menor a mayor)
+Cada minucia ya convertida a ISOCC con su forma (X, Y, T|T), es ordenada direcatamente con base a la posicón **X** de la misma, en orden ascendente (de menor a mayor)
 ```c++
 void XYAsc(unsigned char *a, short n);
 ```
 #### Sorting XY Descendente (XYDsc)
-Cada minucia ya convertida a ISOCC con su forma (X, Y, T|A), es ordenada direcatamente con base a la posicón **X** de la misma, en orden descendente (de mayor a menor)
+Cada minucia ya convertida a ISOCC con su forma (X, Y, T|T), es ordenada direcatamente con base a la posicón **X** de la misma, en orden descendente (de mayor a menor)
 ```c++
 void XYDsc(unsigned char *a, short n);
 ```
 #### Sorting YX Ascendente (YXAsc)
-Cada minucia ya convertida a ISOCC con su forma (X, Y, T|A), es ordenada direcatamente con base a la posicón **Y** de la misma, en orden ascendente (de menor a mayor)
+Cada minucia ya convertida a ISOCC con su forma (X, Y, T|T), es ordenada direcatamente con base a la posicón **Y** de la misma, en orden ascendente (de menor a mayor)
 ```c++
 void YXAsc(unsigned char *a, short n);
 ```
 #### Sorting YX Descendente (YXDsc)
-Cada minucia ya convertida a ISOCC con su forma (X, Y, T|A), es ordenada direcatamente con base a la posicón **Y** de la misma, en orden descendente (de mayor a menor)
+Cada minucia ya convertida a ISOCC con su forma (X, Y, T|T), es ordenada direcatamente con base a la posicón **Y** de la misma, en orden descendente (de mayor a menor)
 ```c++
 void YXDsc(unsigned char *a, short n);
 ```

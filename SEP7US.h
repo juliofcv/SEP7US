@@ -17,7 +17,7 @@
 #ifndef _Included_SEP7US
 #define _Included_SEP7US
 #ifdef __cplusplus
-extern "C" {
+extern "c" {
 #endif
 
 __declspec(dllexport) unsigned char *ISOCC(unsigned char templateFormat, unsigned char *fTemplate, unsigned char sorting);
