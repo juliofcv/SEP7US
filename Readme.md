@@ -2,7 +2,7 @@
 
 # SEP7US MatchOnMard Auxiliar
 
-Librería auxiliar para convertir templates ISO19794 y ANSI378  a la forma ISOCC clave para la verificación biométrica match on card de los chips basados en los estándares ISO7816-4
+Librería auxiliar para convertir templates ISO19794 y ANSI378  a la forma ISOCC clave para la verificación biométrica match on card de los chips basados en los estándares ISO7816-4, la construcción de los módulos están basado es en el estandar MINEX, porpuesto por el NIST
 
 
 ## Autor
