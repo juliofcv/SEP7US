@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="SEP7US"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="D:/gigaDatta/2022/SRC/C++/SEP7US/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/gigaDatta/2022/SRC/C++/SEP7US/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/gigaDatta/2022/SRC/C++/SEP7US/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/gigaDatta/2022/SRC/C++/SEP7US/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/gigaDatta/2022/SRC/C++/SEP7US/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="SEP7US">
+				<Option output="D:/gigaDatta/2022/SRC/C++/SEP7US/cmake-build-debug/SEP7US.dll" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/gigaDatta/2022/SRC/C++/SEP7US/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Program Files/Microsoft/jdk-17.0.2.8-hotspot/include"/>
+					<Add directory="C:/Program Files/Microsoft/jdk-17.0.2.8-hotspot/include/win32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2021.3.4/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2021.3.4/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2021.3.4/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2021.3.4/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2021.3.4/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2021.3.4/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2021.3.4/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/gigaDatta/2022/SRC/C++/SEP7US/cmake-build-debug/Makefile&quot;  VERBOSE=1 SEP7US"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/gigaDatta/2022/SRC/C++/SEP7US/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/gigaDatta/2022/SRC/C++/SEP7US/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/gigaDatta/2022/SRC/C++/SEP7US/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="SEP7US/fast">
+				<Option output="D:/gigaDatta/2022/SRC/C++/SEP7US/cmake-build-debug/SEP7US.dll" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/gigaDatta/2022/SRC/C++/SEP7US/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Program Files/Microsoft/jdk-17.0.2.8-hotspot/include"/>
+					<Add directory="C:/Program Files/Microsoft/jdk-17.0.2.8-hotspot/include/win32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2021.3.4/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2021.3.4/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2021.3.4/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2021.3.4/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2021.3.4/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../include"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2021.3.4/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed"/>
+					<Add directory="C:/Program Files/JetBrains/CLion 2021.3.4/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/gigaDatta/2022/SRC/C++/SEP7US/cmake-build-debug/Makefile&quot;  VERBOSE=1 SEP7US/fast"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/gigaDatta/2022/SRC/C++/SEP7US/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/gigaDatta/2022/SRC/C++/SEP7US/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/gigaDatta/2022/SRC/C++/SEP7US/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="D:/gigaDatta/2022/SRC/C++/SEP7US/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/gigaDatta/2022/SRC/C++/SEP7US/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/gigaDatta/2022/SRC/C++/SEP7US/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/gigaDatta/2022/SRC/C++/SEP7US/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/gigaDatta/2022/SRC/C++/SEP7US/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="D:/gigaDatta/2022/SRC/C++/SEP7US/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/gigaDatta/2022/SRC/C++/SEP7US/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/gigaDatta/2022/SRC/C++/SEP7US/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/gigaDatta/2022/SRC/C++/SEP7US/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~1/JETBRA~1/CLION2~1.4/bin/mingw/bin/mingw32-make.exe -f &quot;D:/gigaDatta/2022/SRC/C++/SEP7US/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="D:/gigaDatta/2022/SRC/C++/SEP7US/SEP7US.cpp">
+			<Option target="SEP7US"/>
+		</Unit>
+		<Unit filename="D:/gigaDatta/2022/SRC/C++/SEP7US/SEP7US.h">
+			<Option target="SEP7US"/>
+		</Unit>
+		<Unit filename="D:/gigaDatta/2022/SRC/C++/SEP7US/Sorting.cpp">
+			<Option target="SEP7US"/>
+		</Unit>
+		<Unit filename="D:/gigaDatta/2022/SRC/C++/SEP7US/Sorting.h">
+			<Option target="SEP7US"/>
+		</Unit>
+		<Unit filename="D:/gigaDatta/2022/SRC/C++/SEP7US/VersionResource.rc">
+			<Option target="SEP7US"/>
+		</Unit>
+		<Unit filename="D:/gigaDatta/2022/SRC/C++/SEP7US/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

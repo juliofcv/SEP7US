@@ -1,0 +1,30 @@
+1 VERSIONINFO
+FILEVERSION 3,0,0,0
+PRODUCTVERSION 3,0,0,0
+FILEOS 0x4L
+FILETYPE 0x1L
+FILESUBTYPE 0x0L
+BEGIN
+BLOCK "StringFileInfo"
+BEGIN
+    //https://docs.microsoft.com/en-us/windows/desktop/menurc/stringfileinfo-block
+	BLOCK "040A04b0"
+	BEGIN
+		VALUE "Comments", "GIGADATTA\000"
+        VALUE "CompanyName", "GIGADATTA\000"
+        VALUE "FileDescription", "SEP7US Auxiliar de conversion de templates biometricos\000"
+        VALUE "InternalName", "SEP7US.dll\000"
+        VALUE "LegalCopyright", "\251GIGADATTA 2013-2019\000"
+        VALUE "ProductName", "SEP7US\000"
+        VALUE "ProductVersion", "3.0.0.0\000"
+        VALUE "OriginalFilename", "SEP7US.dll\000"
+        VALUE "PrivateBuild","3.0.0.0\000"
+        VALUE "SpecialBuild","3.0.0.0\000"
+	END
+END
+//https://docs.microsoft.com/en-us/windows/desktop/menurc/varfileinfo-block
+BLOCK "VarFileInfo"
+BEGIN
+VALUE "Translation", 0x040A, 1200
+END
+END

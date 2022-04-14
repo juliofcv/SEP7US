@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2021.3.4\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\SEP7US.dir/objects.a
+C:\PROGRA~1\JETBRA~1\CLION2~1.4\bin\mingw\bin\ar.exe qc CMakeFiles\SEP7US.dir/objects.a @CMakeFiles\SEP7US.dir\objects1.rsp
+C:\PROGRA~1\JETBRA~1\CLION2~1.4\bin\mingw\bin\G__~1.EXE -g -shared -o SEP7US.dll -Wl,--out-implib,libSEP7US.dll.a -Wl,--major-image-version,0,--minor-image-version,0 -Wl,--whole-archive CMakeFiles\SEP7US.dir/objects.a -Wl,--no-whole-archive @CMakeFiles\SEP7US.dir\linklibs.rsp
