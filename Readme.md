@@ -16,51 +16,51 @@ Cualquier modificación que se realice sin la supervisón y/o consentimiento del
 * C++
 * Java Native Interface
 ***
-#SEP7US
+# SEP7US
 
 Generación plantilla ISOCC con uso directo para Aplicaciones PIV en tarjetas inteligentes ISO7816
-##Identificación del template
+## Identificación del template
 La compatibilidad de esta herramienta se basa en los 2 siguientes tipos de template
 * ISO7816
 * ANSI378
-##Proceso Interno
+## Proceso Interno
 - Conteo de Minucias
 - Recuantización Espacial
 - Recuantización Angular
 - Sorting de Minucias
-##Métodos externos principales
+## Métodos externos principales
 - Obtención directa de la plantilla ISOCC
 - Adición de cabeceras ISO7816
 ***
-##Identificación del template
+## Identificación del template
 Es importante delimitar la posición de la data, dependiendo el template que se reciba
-###ISO19794
+### ISO19794
 Posición donde comienza la data en plantillas ISO19794
 ```c++
 posDataTemplate = 0x12;
 ```
-###ANSI378
+### ANSI378
 Posición donde comienza la data en plantillas ANSI378
 ```c++
 posDataTemplate = 0x14;
 ```
 ***
-##Proceso Interno
-###Conteo de minucias
+## Proceso Interno
+### Conteo de minucias
 
 ```c++
 short numMinutiae = (short) fTemplate[posDataTemplate+9] & 0xFF;
 ```
-####Tamaño del array que tendrá todo el template ISOCC
+#### Tamaño del array que tendrá todo el template ISOCC
 Dada la forma del template (X, Y, T|A) el tamaño del array estará determinado por el númer de minucias multiplicado por 3
 ```c++
 short sizeISOCC = numMinutiae*3;
 ```
 ***
 
-###Recuantización Espacial
+### Recuantización Espacial
 Este proceso sirve para expresar las coordenadas de las minucias en términos de 0.1mm ***CoordMM***
-####Expresión base
+#### Expresión base
 ```nashorn js
 CoordMM         = 10 * Coord / RES
 CoordUNITS	= CoordMM / 0.1
@@ -68,20 +68,20 @@ CoordCC	        = 0.5 + CoordUNITS
 ```
 Es importante primero obtener la resolución del template
 
-####Cálculo de la resolución del template
+#### Cálculo de la resolución del template
 ```c++
 short xres = (short) (fTemplate[posDataTemplate+0] << 8 | fTemplate[posDataTemplate+1]) & 0xFF;
 short yres = (short) (fTemplate[posDataTemplate+2] << 8 | fTemplate[posDataTemplate+3]) & 0xFF;
 ```
 La resolución se encuentra expresada en *2 bytes*, por lo tanto se debe de trasladar a un dato de tipo ***short***, para ello el primer byte se corre 8 bits **<<8**, luego con el segundo byte se hace una operación de compuerta lógica ***OR*** **|**, y por último se debe de hacer la operación ***AND*** **& 0xFF**
-####Recuantización espacial X
+#### Recuantización espacial X
 Para calcular la coordenada X en formato ISOCC y usando la expresión base, quedará de la siguiente manera
 ```c++
 *pcoordmmX      = 10.0 * (double) *ptmpx / xres;
 *pcoordunitsX   = *pcoordmmX / 0.1;
 *pcoordccX      = (short)(.5 + *pcoordunitsX);
 ```
-####Recuantización espacial Y
+#### Recuantización espacial Y
 Para calcular la coordenada Y en formato ISOCC y usando la expresión base, quedará de la siguiente manera
 ```c++
 *pcoordmmY      = 10.0 * (double) *ptmpy / yres;
@@ -89,7 +89,7 @@ Para calcular la coordenada Y en formato ISOCC y usando la expresión base, qued
 *pcoordccY      = (short)(.5 + *pcoordunitsY);
 ```
 ***
-###Recuantización Angular
+### Recuantización Angular
 La recuantización angular sirve para representar en 6 bits el ángulo de la minucia teniendo en cuenta que la resolución de los angluos varia en los 2 formatos ANSI e ISO, para representar en 6 bits un ángulo cuyo valor máximo será 360, se hará de la siguiente manera.
 ####Cálculo del divisor base para plantillas ISOCC
 ```
@@ -100,7 +100,7 @@ Entonces se puede delimitar como constante
 float ISOCC_ANGLE_RESOLUTION = 5.625f;
 ```
 Previo a la recuantización angular es necesario expresar el angulo en formato normal (**360°**), para ello cada tipo de template representa los angulos de manera distinta
-####Angulo para formato ISO19794
+#### Angulo para formato ISO19794
 El angulo se expresa en 8 bits **0xFF** 
 ```
 360/256 = 1.40625
@@ -110,7 +110,7 @@ Por lo tanto se puede delimitar como constante de la siguiente forma
 ANGLE_RESOLUTION = 1.40625f;
 ```
 
-####Angulo para formato ANSI378
+#### Angulo para formato ANSI378
 Resolución del ángulo para formato ANSI378 expresado en su forma normal dividido 2 (**180°**)
 ```
 360/180 = 2
@@ -119,7 +119,7 @@ Por lo tanto se puede delimitar como constante de la siguiente forma
 ```c++
 ANGLE_RESOLUTION = 2;
 ```
-####Tipo de minucia
+#### Tipo de minucia
 El tipo de minucia se guarda en la posición +10 de donde inicia los datos del template
 ```c++
 posDataTemplate+10;
@@ -142,29 +142,29 @@ short t = (*ptmpt | tmpFAngle) & 0xFF;
 ***
 ### Sorting de Minucias
 Aunque algunas tarjetas ISO7816 no necesitan ningun tipo de sorting, se incluyen las 4 funciones principales
-####Sorting XY Ascendente (XYAsc)
+#### Sorting XY Ascendente (XYAsc)
 Cada minucia ya convertida a ISOCC con su forma (X, Y, T|A), es ordenada direcatamente con base a la posicón **X** de la misma, en orden ascendente (de menor a mayor)
 ```c++
 void XYAsc(unsigned char *a, short n);
 ```
-####Sorting XY Descendente (XYDsc)
+#### Sorting XY Descendente (XYDsc)
 Cada minucia ya convertida a ISOCC con su forma (X, Y, T|A), es ordenada direcatamente con base a la posicón **X** de la misma, en orden descendente (de mayor a menor)
 ```c++
 void XYDsc(unsigned char *a, short n);
 ```
-####Sorting YX Ascendente (YXAsc)
+#### Sorting YX Ascendente (YXAsc)
 Cada minucia ya convertida a ISOCC con su forma (X, Y, T|A), es ordenada direcatamente con base a la posicón **Y** de la misma, en orden ascendente (de menor a mayor)
 ```c++
 void YXAsc(unsigned char *a, short n);
 ```
-####Sorting YX Descendente (YXDsc)
+#### Sorting YX Descendente (YXDsc)
 Cada minucia ya convertida a ISOCC con su forma (X, Y, T|A), es ordenada direcatamente con base a la posicón **Y** de la misma, en orden descendente (de mayor a menor)
 ```c++
 void YXDsc(unsigned char *a, short n);
 ```
 ***
-##Métodos externos principales
-###ISOCC
+## Métodos externos principales
+### ISOCC
 Obtiene el template convertido a ISO Compact Card
 * **templateFormat**: Se debe especificar el formato del template 0xFF para formato ISO19794, y 0x7F para formato ANSI378
 * **fTemplate**: EL puntero que apunta al array que contiene el template base
@@ -181,6 +181,6 @@ Obtiene el template convertido a ISO Compact Card
 ```c++
 __declspec(dllexport) unsigned char *ISOCC(unsigned char templateFormat, unsigned char *fTemplate, unsigned char sorting);
 ```
-##Licencia
+## Licencia
 
 MIT
