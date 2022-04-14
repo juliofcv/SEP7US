@@ -170,7 +170,7 @@ void YXDsc(unsigned char *a, short n);
 Obtiene el template convertido a ISO Compact Card
 * **templateFormat**: Se debe especificar el formato del template 0xFF para formato ISO19794, y 0x7F para formato ANSI378
 * **fTemplate**: EL puntero que apunta al array que contiene el template base
-* **sorting**: Se debe especificar el sorting en el parámetro con alguno de los siguientes valores en formato byte<br/>
+* **sorting**: Se debe especificar el sorting en el parámetro con alguno de los siguientes valores en formato byte
 ```text
 0x00 : Obtiene el sorting XY Ascendente (XYAsc)
 0x0F : Obtiene el sorting XY Descendente (XYDsc)
@@ -180,6 +180,39 @@ Obtiene el template convertido a ISO Compact Card
 
 ```c++
 __declspec(dllexport) unsigned char *ISOCC(unsigned char templateFormat, unsigned char *fTemplate, unsigned char sorting);
+```
+### Verify
+Obtiene el template convertido a ISO Compact Card, añadiendo las cabeceras del comando de verificación principal PIV
+>PIV: Acrónimo de Personal Identification Verify está delimitado
+```
+APDUVerify[0]=CLA;
+APDUVerify[1]=INS;
+APDUVerify[2]=P1;
+APDUVerify[3]=P2;
+APDUVerify[4]=sizeISOCC+5;
+APDUVerify[5]=0x7F;
+APDUVerify[6]=0x2E;
+APDUVerify[7]=sizeISOCC+2;
+APDUVerify[8]=0x81;
+APDUVerify[9]=sizeISOCC;
+```
+Generalmente el comando de aplicación usado es **0x00 0x21**, se deja libre elección para casos especiales, en los bytes 5 y 6 se añade la cabecera
+>**7F2E**: Es indicativa de ***"Biometric data template"***, indicado en el estándar ISO/IEC 19794-2
+* **CLA**: Class of instruction
+* **INS**: Instruction code
+* **P1**: Instruction parameter 1
+* **P2**: Instruction parameter 2
+* **templateFormat**: Se debe especificar el formato del template 0xFF para formato ISO19794, y 0x7F para formato ANSI378
+* **fTemplate**: EL puntero que apunta al array que contiene el template base
+* **sorting**: Se debe especificar el sorting en el parámetro con alguno de los siguientes valores en formato byte
+```text
+0x00 : Obtiene el sorting XY Ascendente (XYAsc)
+0x0F : Obtiene el sorting XY Descendente (XYDsc)
+0x10 : Obtiene el sorting YX Ascendente (YXAsc)
+0x1F : Obtiene el sorting YX Descendente (YXDsc)
+```
+```c++
+__declspec(dllexport) unsigned char *Verify(unsigned char CLA, unsigned char INS, unsigned char P1, unsigned char P2, unsigned char templateFormat, unsigned char *fTemplate, unsigned char sorting);
 ```
 ## Licencia
 
