@@ -2,7 +2,7 @@
 
 # SEP7US MatchOnMard Auxiliar
 
-Librería auxiliar para convertir templates ISO19794 y ANSI378  a la forma ISOCC clave para la verificación biométrica match on card de los chips basados en los estándares ISO7816-4, la construcción de los módulos están basado es en el estandar MINEX, propuesto por el NIST
+Librería auxiliar para convertir templates ISO/IEC 19794-2:2005 y ANSI INCITS 378-2004  a la forma ISOCC clave para la verificación biométrica match on card de los chips basados en los estándares ISO7816-4, la construcción de los módulos están basado es en el estandar MINEX, propuesto por el NIST
 
 
 ## Autor
@@ -14,17 +14,17 @@ SEP7US Match on Card 0x7E3
 
 Cualquier modificación que se realice sin la supervisón y/o consentimiento del corre por su cuenta y riesgo. Cualquier cambio en el código alterará drásticamente los resultados de la verificativa sobre cualquier aplicación PIV Smart Card
 
-## Herramientas utilizadas
-* c++
+## Lenguajes y Herramientas utilizadas
+* C++
 * Java Native Interface
 ***
 # SEP7US
 
-Generación plantilla ISOCC con uso directo para Aplicaciones PIV en tarjetas inteligentes ISO7816
+Generación plantilla ISOCC con uso directo para Aplicaciones PIV en tarjetas inteligentes ISO/IEC 7816-4
 ## Identificación del template
 La compatibilidad de esta herramienta se basa en los 2 siguientes tipos de template
-* ISO7816
-* ANSI378
+* ISO/IEC 19794-2:2005
+* ANSI INCITS 378-2004
 ## Proceso Interno
 - Conteo de Minucias
 - Recuantización Espacial
@@ -32,38 +32,44 @@ La compatibilidad de esta herramienta se basa en los 2 siguientes tipos de templ
 - Sorting de Minucias
 ## Métodos externos principales
 - Obtención directa de la plantilla ISOCC
-- Adición de cabeceras ISO7816
+- Adición de cabeceras ISO/IEC 7816-4
 ***
 ## Identificación del template
 Es importante delimitar la posición de la data, dependiendo el template que se reciba
-### ISO19794
-Posición donde comienza la data en plantillas ISO19794
+### ISO/IEC 19794-2:2005
+Posición donde comienza la data en plantillas ISO/IEC 19794-2:2005 > *(DEC=18, HEX=12)*
 ```c++
 posDataTemplate = 0x12;
 ```
-### ANSI378
-Posición donde comienza la data en plantillas ANSI378
+### ANSI INCITS 378-2004
+Posición donde comienza la data en plantillas ANSI INCITS 378-2004 > *(DEC=20, HEX=14)*
 ```c++
 posDataTemplate = 0x14;
 ```
 ***
 ## Proceso Interno
+Para la mayoría de variables o definiciones nos guiaremos de la variable que indica donde comienzan la data de la minucia
+```c++
+posDataTemplate;
+```
+
 ### Conteo de minucias
 
 ```c++
 short numMinutiae = (short) fTemplate[posDataTemplate+9] & 0xFF;
 ```
 #### Tamaño del array que tendrá todo el template ISOCC
-Dada la forma del template (X, Y, T|T) el tamaño del array estará determinado por el númer de minucias multiplicado por 3
+Dada la forma del template (X, Y, T|A) el tamaño del array estará determinado por el número de minucias multiplicado por 3
 ```c++
-short sizeISOCC = numMinutiae*3;
+// numMinutiae
+short sizeISOCC = numMinutiae * 3;
 ```
 ***
 
 ### Recuantización Espacial
-Este proceso sirve para expresar las coordenadas de las minucias en términos de 0.1mm ***CoordMM***
-#### Expresión base
-```nashorn js
+Este proceso sirve para expresar las coordenadas de las minucias en términos de 0.1mm
+#### Fórmula base
+```c++
 CoordMM         = 10 * Coord / RES
 CoordUNITS	= CoordMM / 0.1
 CoordCC	        = 0.5 + CoordUNITS
@@ -102,7 +108,7 @@ Entonces se puede delimitar como constante
 float ISOCC_ANGLE_RESOLUTION = 5.625f;
 ```
 Previo a la recuantización angular es necesario expresar el angulo en formato normal (**360°**), para ello cada tipo de template representa los angulos de manera distinta
-#### Angulo para formato ISO19794
+#### Angulo para formato ISO/IEC 19794-2:2005
 El angulo se expresa en 8 bits **0xFF** 
 ```
 360/256 = 1.40625
@@ -112,8 +118,8 @@ Por lo tanto se puede delimitar como constante de la siguiente forma
 ANGLE_RESOLUTION = 1.40625f;
 ```
 
-#### Angulo para formato ANSI378
-Resolución del ángulo para formato ANSI378 expresado en su forma normal dividido 2 (**180°**)
+#### Angulo para formato ANSI INCITS 378-2004
+Resolución del ángulo para formato ANSI INCITS 378-2004 expresado en su forma normal dividido 2 (**180°**)
 ```
 360/180 = 2
 ```
@@ -143,24 +149,24 @@ short t = (*ptmpt | tmpFAngle) & 0xFF;
 ```
 ***
 ### Sorting de Minucias
-Aunque algunas tarjetas ISO7816 no necesitan ningun tipo de sorting, se incluyen las 4 funciones principales
+Aunque algunas tarjetas smartcard no necesitan ningun tipo de sorting, se incluyen las 4 funciones principales
 #### Sorting XY Ascendente (XYAsc)
-Cada minucia ya convertida a ISOCC con su forma (X, Y, T|T), es ordenada direcatamente con base a la posicón **X** de la misma, en orden ascendente (de menor a mayor)
+Cada minucia ya convertida a ISOCC con su forma (X, Y, T|A), es ordenada direcatamente con base a la posicón **X** de la misma, en orden ascendente (de menor a mayor)
 ```c++
 void XYAsc(unsigned char *a, short n);
 ```
 #### Sorting XY Descendente (XYDsc)
-Cada minucia ya convertida a ISOCC con su forma (X, Y, T|T), es ordenada direcatamente con base a la posicón **X** de la misma, en orden descendente (de mayor a menor)
+Cada minucia ya convertida a ISOCC con su forma (X, Y, T|A), es ordenada direcatamente con base a la posicón **X** de la misma, en orden descendente (de mayor a menor)
 ```c++
 void XYDsc(unsigned char *a, short n);
 ```
 #### Sorting YX Ascendente (YXAsc)
-Cada minucia ya convertida a ISOCC con su forma (X, Y, T|T), es ordenada direcatamente con base a la posicón **Y** de la misma, en orden ascendente (de menor a mayor)
+Cada minucia ya convertida a ISOCC con su forma (X, Y, T|A), es ordenada direcatamente con base a la posicón **Y** de la misma, en orden ascendente (de menor a mayor)
 ```c++
 void YXAsc(unsigned char *a, short n);
 ```
 #### Sorting YX Descendente (YXDsc)
-Cada minucia ya convertida a ISOCC con su forma (X, Y, T|T), es ordenada direcatamente con base a la posicón **Y** de la misma, en orden descendente (de mayor a menor)
+Cada minucia ya convertida a ISOCC con su forma (X, Y, T|A), es ordenada direcatamente con base a la posicón **Y** de la misma, en orden descendente (de mayor a menor)
 ```c++
 void YXDsc(unsigned char *a, short n);
 ```
@@ -168,7 +174,7 @@ void YXDsc(unsigned char *a, short n);
 ## Métodos externos principales
 ### ISOCC
 Obtiene el template convertido a ISO Compact Card
-* **templateFormat**: Se debe especificar el formato del template 0xFF para formato ISO19794, y 0x7F para formato ANSI378
+* **templateFormat**: Se debe especificar el formato del template 0xFF para formato ISO/IEC 19794-2:2005, y 0x7F para formato ANSI INCITS 378-2004
 * **fTemplate**: EL puntero que apunta al array que contiene el template base
 * **sorting**: Se debe especificar el sorting en el parámetro con alguno de los siguientes valores en formato byte
 ```text
@@ -202,7 +208,7 @@ Generalmente el comando de aplicación usado es **0x00 0x21**, se deja libre ele
 * **INS**: Instruction code
 * **P1**: Instruction parameter 1
 * **P2**: Instruction parameter 2
-* **templateFormat**: Se debe especificar el formato del template 0xFF para formato ISO19794, y 0x7F para formato ANSI378
+* **templateFormat**: Se debe especificar el formato del template 0xFF para formato ISO/IEC 19794-2:2005, y 0x7F para formato ANSI INCITS 378-2004
 * **fTemplate**: EL puntero que apunta al array que contiene el template base
 * **sorting**: Se debe especificar el sorting en el parámetro con alguno de los siguientes valores en formato byte
 ```text

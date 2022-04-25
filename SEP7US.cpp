@@ -23,7 +23,7 @@ unsigned char *toISOCC(unsigned char templateFormat, unsigned char *fTemplate, u
  * @param INS Instruction code
  * @param P1 Instruction parameter 1
  * @param P2 Instruction parameter 2
- * @param templateFormat Se debe especificar el formato del template 0xFF para formato ISO19794, y 0x7F para formato ANSI378
+ * @param templateFormat Se debe especificar el formato del template 0xFF para formato ISO19794, y 0x7F para formato ANSI INCITS 378-2004
  * @param fTemplate EL puntero que apunta al array que contiene el template base
  * @param sorting Se debe especificar el sorting en el parámetro con alguno de los siguientes valores en formato byte
  *  0x00 : Obtiene el sorting XY Ascendente (XYAsc)
@@ -53,7 +53,7 @@ __declspec(dllexport) unsigned char *Verify(unsigned char CLA, unsigned char INS
 
 /**
  * Obtiene el tempalte directo en formato ISOCC
- * @param templateFormat Se debe especificar el formato del template 0xFF para formato ISO19794, y 0x7F para formato ANSI378
+ * @param templateFormat Se debe especificar el formato del template 0xFF para formato ISO19794, y 0x7F para formato ANSI INCITS 378-2004
  * @param fTemplate EL puntero que apunta al array que contiene el template base
  * @param sorting  Se debe especificar el sorting
  * 0x00 XYAsc
@@ -68,7 +68,7 @@ __declspec(dllexport) unsigned char *ISOCC(unsigned char templateFormat, unsigne
 
 /**
  * Conversión a ISOCC
- * @param templateFormat Se debe especificar el formato del template 0xFF para formato ISO19794, y 0x7F para formato ANSI378
+ * @param templateFormat Se debe especificar el formato del template 0xFF para formato ISO19794, y 0x7F para formato ANSI INCITS 378-2004
  * @param fTemplate EL puntero que apunta al array que contiene el template base
  * @param sorting Se debe especificar el sorting
  * 0x00 XYAsc
@@ -87,9 +87,9 @@ unsigned char *toISOCC(unsigned char templateFormat, unsigned char *fTemplate, u
         //Inicio de la posición de la data crítica para templates formato ISO19794
         posDataTemplate = 0x12;
     } else if ( templateFormat == 0x7F )  {
-        //Resolución del ángulo para formato ANSI378 expresado en 360/2 => 180
+        //Resolución del ángulo para formato ANSI INCITS 378-2004 expresado en 360/2 => 180
         ANGLE_RESOLUTION = 2;
-        //Inicio de la posición de la data crítica para templates formato ANSI378
+        //Inicio de la posición de la data crítica para templates formato ANSI INCITS 378-2004
         posDataTemplate = 0x14;
     }
     // Cálculo de la resolución del template
@@ -146,7 +146,7 @@ unsigned char *toISOCC(unsigned char templateFormat, unsigned char *fTemplate, u
         *pcoordunitsY = *pcoordmmY / 0.1;
         *pcoordccY = (short)(.5 + *pcoordunitsY);
         ISOCC[k] = *pcoordccY; k++;
-        //Calculo del ángulo del template por la resolución ya sea ISO o ANSI
+        //Calculo del ángulo del template por la resolución ya sea ISO o ANSI INCITS 378-2004
         tmpCAngle = ANGLE_RESOLUTION * (*ptmpa);
         //Recuantización angular
         tmpFAngle = tmpCAngle/ISOCC_ANGLE_RESOLUTION;
